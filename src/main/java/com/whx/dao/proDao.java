@@ -13,7 +13,7 @@ public interface proDao {
     Product selectByid(int product_id);
     /**
      * 添加
-     *
+     *是2121
      * @return
      */
     int insert( Product pro);
