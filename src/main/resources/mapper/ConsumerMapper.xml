@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whx.dao.proDao">
+
+
+    <resultMap id="ConsumerMap" type="com.whx.po.Consumer">
+        <id column="consumer_id" property="consumer_id"/>
+        <result column="consumer_username" property="consumer_username"/>
+        <result column="consumer_password" property="consumer_password"/>
+        <association property="consumer_id" javaType="com.whx.po.Consumer_permission" select="com.whx.dao." column="consumer_id"/>
+    </resultMap>
+</mapper>

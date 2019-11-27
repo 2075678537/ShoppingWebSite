@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <style>
+        #sss {
+            background-color: green;
+        }
+
+        #ddd {
+            background-color: gold;
+        }
+
+        div {
+            background-color: bisque;
+        }
+
+    </style>
+</head>
+<body>
+<input  class="form-control"  placeholder="商品名称" name="product_name" th:text="">
+<a th:href="@{/pro/toInsert}" type="submit"class="btn btn-secondary">添加</a>
+<div>
+
+    <table class="table">
+        <tbody>
+        <tr align="center" id="sss">
+            <td>编号</td>
+            <td>名称</td>
+            <td>库存</td>
+            <td>价格</td>
+            <td>状态</td>
+            <td>操作</td>
+        </tr>
+        <tr align="center" th:each="pro:${list}" id="ddd">
+            <td th:text="${pro.product_id}"></td>
+            <td th:text="${pro.product_name}"></td>
+            <td th:text="${pro.product_num}"></td>
+            <td th:text="${pro.product_price}"></td>
+            <td th:text="${pro.product_status.status_name}"></td>
+            <td>
+
+             <a th:href="@{/pro/selectOne(product_id=${pro.product_id})}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">修改</a>
+                <a class="btn btn-danger btn-sm active" role="button" aria-pressed="true">删除</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

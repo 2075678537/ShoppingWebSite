@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<form action="/pro/update">
+    <div class="form-group">
+        <label>商品编号</label>
+        <input type="text" class="form-control" hidden  name="product_id" th:value="${pro.product_id}" readonly>
+    </div>
+    <div class="form-group">
+        <label>商品名称</label>
+        <input type="text" class="form-control" name="product_name" th:value="${pro.product_name}" readonly>
+    </div>
+    <div class="form-group">
+        <label>商品库存</label>
+        <input type="text" class="form-control" name="product_num" th:value="${pro.product_num}">
+    </div>
+    <div class="form-group">
+        <label>商品价格</label>
+        <input type="text" class="form-control" name="product_price" th:value="${pro.product_price}">
+    </div>
+    <div class="form-group">
+        <label>商品状态</label>
+        <select class="form-control" name="product_status.status_id">
+            <option th:each="sta:${sta}" th:value="${sta.status_id}" th:text="${sta.status_name}"
+                    th:selected="${pro.product_status.status_id==sta.status_id}">Default select
+            </option>
+        </select>
+    </div>
+
+    <div><button type="submit" class="btn btn-primary">修改</button></div>
+</form>
+</body>
+</html>

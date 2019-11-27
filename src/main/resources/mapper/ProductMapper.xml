@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whx.dao.proDao">
+
+    <select id="celectAll" resultMap="productMap">
+        select * from product
+        <where>
+                <if test="product_name!=null and product_name">
+
+                </if>
+    </select>
+    <select id="selectByid" resultMap="productMap">
+         select * from product where product_id=#{productId}
+    </select>
+    <insert id="insert">
+        insert into product (product_name, product_num, product_price, product_status)
+        values (#{product_name},#{product_num},#{product_price},#{product_status.status_id});
+    </insert>
+    <update id="update">
+         update product set product_name=#{product_name} product_num=#{product_num},product_price=#{product_price},product_status=#{product_status.status_id}
+        where product_id=#{product_id}
+    </update>
+    <resultMap id="productMap" type="com.whx.po.Product">
+        <id column="product_id" property="product_id"/>
+        <result column="product_name" property="product_name"/>
+        <result column="product_num" property="product_num"/>
+        <result column="product_price" property="product_price"/>
+        <association property="product_status" javaType="com.whx.po.Status" select="com.whx.dao.staDao.selectByid" column="product_status"/>
+    </resultMap>
+</mapper>

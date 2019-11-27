@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<form action="/pro/insert">
+
+<div class="form-group">
+    <label>商品名称</label>
+    <input type="text" class="form-control" name="product_name">
+</div>
+<div class="form-group">
+    <label>商品库存</label>
+    <input type="text" class="form-control" name="product_num" >
+</div>
+<div class="form-group">
+    <label>商品价格</label>
+    <input type="text" class="form-control" name="product_price"  >
+</div>
+<div class="form-group">
+
+    <label>商品状态</label>
+    <select class="form-control" name="product_status.status_id">
+        <option th:each="stu:${sta}" th:value="${stu.status_id}" th:text="${stu.status_name}">Default select
+        </option>
+    </select>
+</div>
+<button type="submit" class="btn btn-primary btn-lg">添加</button>
+</form>
+</body>
+</html>
